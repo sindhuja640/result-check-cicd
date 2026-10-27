@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            width: 340px;
+            max-width: 85%;
+            box-shadow: 0 5px 20px #00000015;
+            text-align: center;
+        }
+        h1 { color: #174ea6; font-size: 25px; }
+        input, button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+        input { border: 1px solid #ccc; }
+        button {
+            background: #174ea6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .result, .error {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        .result { background: #e8f5e9; }
+        .error { background: #ffebee; color: #b71c1c; }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Student Result Portal</h1>
+        <p>Enter your roll number to view your result.</p>
+
+        <form method="POST">
+            <input type="text" name="roll_number"
+                   placeholder="Enter roll number"
+                   aria-label="Roll number" required>
+            <button type="submit">Check Result</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Result Details</h2>
+            <p><strong>Roll Number:</strong> {{ result.roll_number }}</p>
+            <p><strong>Name:</strong> {{ result.name }}</p>
+            <p><strong>Marks:</strong> {{ result.marks }}/100</p>
+            <p><strong>Status:</strong> {{ result.status }}</p>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+    </main>
+</body>
+</html>
