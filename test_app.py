@@ -7,7 +7,7 @@ def test_existing_student_passes():
 
     assert result is not None
     assert result["name"] == "Ananya"
-    assert result["marks"] == 0
+    assert result["marks"] == 85
     assert result["status"] == "Pass"
 
 
